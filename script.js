@@ -3,9 +3,11 @@ const messageContainer = document.getElementById('message-container')
 const messageForm = document.getElementById('send-container')
 const messageInput = document.getElementById('message-input')
 
-const name = prompt('What is your name?')
+const userName = prompt('What is your name?')
+const room = prompt('What is your room')
 appendMessage('You joined')
-socket.emit('new-user', name)
+
+socket.emit('new-user', { 'name': userName, 'room': room })
 
 socket.on('chat-message', data => {
   appendMessage(`${data.name}: ${data.message}`)
